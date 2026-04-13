@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: mock-campaign-api
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: API_TITLE
+        value: "Mock Campaign API"
+      - key: API_VERSION
+        value: "1.0.0"
+      - key: API_KEY
+        generateValue: true
+      - key: PORT
+        value: "10000"
